@@ -27,7 +27,6 @@ phases:
       - docker push $REPOSITORY_URI:$IMAGE_TAG
       - echo Writing image definitions file... 
       - printf '{"ImageURI":"%s"}' $REPOSITORY_URI:$IMAGE_TAG > imageDetail.json
-      - cat productionimagedefinition.json
       - cat imageDetail.json
     
   
@@ -35,5 +34,4 @@ artifacts:
     files:
     - appspec.yml
     - taskdef.json
-    - productionimagedefinition.json
     - imageDetail.json      
