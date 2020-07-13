@@ -47,7 +47,7 @@ def test_health(client):
 
 if __name__ == '__main__':
     import os
-    HOST = os.environ.get('SERVER_HOST', '[::]')
+    HOST = os.environ.get('SERVER_HOST', '0.0.0.0')
     try:
         PORT = int(os.environ.get('SERVER_PORT', '9020'))
     except ValueError:
