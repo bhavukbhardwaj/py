@@ -4,7 +4,7 @@ It contains the definition of routes and views for the application.
 """
 
 from flask import Flask, request
-from http import HTTPStatus
+
 
 
 app = Flask(__name__)
