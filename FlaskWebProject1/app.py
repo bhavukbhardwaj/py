@@ -4,10 +4,14 @@ It contains the definition of routes and views for the application.
 """
 
 from flask import Flask, request
+from http import HTTPStatus
+
+
 app = Flask(__name__)
 
 # Make the WSGI interface available at the top level so wfastcgi can get it.
 wsgi_app = app.wsgi_app
+
 
 
 @app.route('/pyapi')
@@ -34,11 +38,16 @@ def query_example():
 
     return '''<h1>The language value is: {}</h1>'''.format(language)
 
+@app.route('/')
+def test_health(client):
+    response = client.get('/health/')
+    assert response.status_code == HTTPStatus.OK, 'Health check failed'
+    assert response.json == {'message': 'Healthy'}, 'Improper response'
 
 
 if __name__ == '__main__':
     import os
-    HOST = os.environ.get('SERVER_HOST', 'localhost')
+    HOST = os.environ.get('SERVER_HOST', '[::]')
     try:
         PORT = int(os.environ.get('SERVER_PORT', '9020'))
     except ValueError:
