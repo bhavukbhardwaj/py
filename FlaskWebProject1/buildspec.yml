@@ -16,7 +16,7 @@ phases:
       - echo Build started on `date`
       - echo Building the Docker image...
       - docker info
-      - docker build -t $REPOSITORY_URI:pylatest 
+      - docker build -t $REPOSITORY_URI:pylatest .
 
       - docker tag $REPOSITORY_URI:pylatest $REPOSITORY_URI:$IMAGE_TAG
   post_build: 
