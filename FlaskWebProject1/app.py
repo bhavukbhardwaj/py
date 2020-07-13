@@ -38,11 +38,7 @@ def query_example():
 
     return '''<h1>The language value is: {}</h1>'''.format(language)
 
-@app.route('/')
-def test_health(client):
-    response = client.get('/health/')
-    assert response.status_code == HTTPStatus.OK, 'Health check failed'
-    assert response.json == {'message': 'Healthy'}, 'Improper response'
+
 
 
 if __name__ == '__main__':
